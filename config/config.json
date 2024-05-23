@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "sa",
+    "password": "123",
+    "database": "LARGEDB",
+    "host": "DESKTOP-GUNNR13",
+    "dialect": "mssql",
+    "logging": false
+  },
+  "test": {
+    "username": "sa",
+    "password": "123",
+    "database": "LARGEDB",
+    "host": "DESKTOP-GUNNR13",
+    "dialect": "mssql",
+    "logging": false
+  },
+  "production": {
+    "username": "sa",
+    "password": "123",
+    "database": "LARGEDB",
+    "host": "DESKTOP-GUNNR13",
+    "dialect": "mssql",
+    "logging": false
+  }
+}
