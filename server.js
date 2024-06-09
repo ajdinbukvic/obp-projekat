@@ -1,14 +1,16 @@
 const app = require('./app');
+const mongoose = require('mongoose');
+const db = require('./models');
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env' });
+const port = process.env.PORT || 5000;
+const mongoUrl = process.env.MONGO_URL;
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
   console.log(err.name, err.message);
   process.exit(1);
 });
-
-const mongoose = require('mongoose');
-
-const mongoUrl = 'mongodb://localhost:27017/LARGEDB';
 
 mongoose
   .connect(mongoUrl)
@@ -19,8 +21,6 @@ mongoose
     console.error('MongoDB connection error:', err);
   });
 
-const db = require('./models');
-
 db.sequelize
   .authenticate()
   .then(() => {
@@ -30,33 +30,6 @@ db.sequelize
     console.error('SQL Server connection error:', err);
   });
 
-/*const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize({
-  host: 'DESKTOP-GUNNR13',
-  port: 1433,
-  dialect: 'mssql',
-  database: 'LARGEDB',
-  username: 'sa',
-  password: '123',
-  dialectOptions: {
-    options: { encrypt: true },
-  },
-  authentication: {
-    type: 'ntlm',
-  },
-});
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connected to SQL Server');
-  })
-  .catch((err) => {
-    console.error('SQL Server connection error:', err);
-  });*/
-
-const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
   console.log(`App running on port: ${port}...`);
 });
