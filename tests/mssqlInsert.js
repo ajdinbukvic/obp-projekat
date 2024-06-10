@@ -1,5 +1,6 @@
 const { Shop } = require('../models');
 const db = require('../models');
+const { performance } = require('perf_hooks');
 const createFakeProduct = require('./generateFakeData');
 
 db.sequelize
