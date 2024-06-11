@@ -1,7 +1,9 @@
 const Shop = require('../schemas/shop');
 const Benchmark = require('benchmark');
 const mongoose = require('mongoose');
-const mongoUrl = 'mongodb://localhost:27017/LARGEDB';
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env' });
+const mongoUrl = process.env.MONGO_URL;
 
 mongoose
   .connect(mongoUrl)

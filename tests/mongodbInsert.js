@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const Shop = require('../schemas/shop');
 const { performance } = require('perf_hooks');
 const createFakeProduct = require('./generateFakeData');
-const mongoUrl = 'mongodb://localhost:27017/LARGEDB';
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env' });
+const mongoUrl = process.env.MONGO_URL;
 
 mongoose
   .connect(mongoUrl)
